@@ -8,9 +8,10 @@ const languages = [
 ];
 
 const interests = [
-  { text: "Exploring AI and emerging technologies", emoji: "🤖" },
-  { text: "Social media trends & digital marketing", emoji: "📱" },
-  { text: "Designing images and videos", emoji: "🎨" },
+  { text: "Political awareness and understanding governance", emoji: "🏛️" },
+  { text: "Writing and expressing youth voices", emoji: "✍️" },
+  { text: "Public speaking and communication", emoji: "🎤" },
+  { text: "Analyzing current affairs and societal issues", emoji: "📊" },
 ];
 
 const LanguagesInterestsSection = () => (

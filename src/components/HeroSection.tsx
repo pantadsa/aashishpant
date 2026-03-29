@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Mail, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profilePhoto from "@/assets/profile-photo.jpg";
+const profilePhoto = "https://i.postimg.cc/MHC13Mcm/IMG-1185.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const floatingVariants = {

@@ -5,6 +5,7 @@ import EducationSection from "@/components/EducationSection";
 import SkillsSection from "@/components/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import WritingSection from "@/components/WritingSection";
+import ArticlesSection from "@/components/ArticlesSection";
 import CareerObjectiveSection from "@/components/CareerObjectiveSection";
 import LanguagesInterestsSection from "@/components/LanguagesInterestsSection";
 import ContactSection from "@/components/ContactSection";
@@ -19,6 +20,7 @@ const Index = () => (
     <SkillsSection />
     <ExperienceSection />
     <WritingSection />
+    <ArticlesSection />
     <CareerObjectiveSection />
     <LanguagesInterestsSection />
     <ContactSection />

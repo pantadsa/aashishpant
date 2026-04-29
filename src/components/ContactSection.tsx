@@ -90,22 +90,29 @@ const ContactSection = () => {
                 </motion.div>
               ))}
 
-              {/* Social */}
+              {/* Social Links */}
               <div className="pt-4">
-                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-3">Find me on</p>
-                <div className="flex gap-3">
-                  {socials.map((s) => (
-                    <a
-                      key={s.name}
-                      href="#"
-                      className="glass-card flex items-center gap-2 px-4 py-2.5 hover-lift group"
-                    >
-                      <span className="text-lg">{s.emoji}</span>
-                      <span className="text-sm font-medium group-hover:text-accent transition-colors">{s.name}</span>
-                      <ArrowUpRight size={12} className="text-muted-foreground group-hover:text-accent transition-colors" />
-                    </a>
-                  ))}
-                </div>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-4">Social Links</p>
+                <TooltipProvider delayDuration={150}>
+                  <div className="flex items-center gap-4">
+                    {socials.map(({ name, icon: Icon, href, color, glow }) => (
+                      <Tooltip key={name}>
+                        <TooltipTrigger asChild>
+                          <a
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={name}
+                            className={`w-12 h-12 rounded-full bg-gradient-to-br ${color} flex items-center justify-center text-primary-foreground shadow-md transition-all duration-300 hover:scale-110 hover:shadow-xl ${glow}`}
+                          >
+                            <Icon size={20} />
+                          </a>
+                        </TooltipTrigger>
+                        <TooltipContent>{name}</TooltipContent>
+                      </Tooltip>
+                    ))}
+                  </div>
+                </TooltipProvider>
               </div>
             </div>
 

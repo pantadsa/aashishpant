@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Send, ArrowUpRight } from "lucide-react";
+import { MapPin, Phone, Mail, Send, Facebook, Linkedin, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { toast } from "sonner";
 
 const contactInfo = [
@@ -13,9 +14,27 @@ const contactInfo = [
 ];
 
 const socials = [
-  { name: "Facebook", emoji: "📘" },
-  { name: "LinkedIn", emoji: "💼" },
-  { name: "Instagram", emoji: "📸" },
+  {
+    name: "Facebook",
+    icon: Facebook,
+    href: "https://facebook.com/aashish.pant.02/",
+    color: "from-blue-600 to-blue-400",
+    glow: "hover:shadow-blue-500/50",
+  },
+  {
+    name: "LinkedIn",
+    icon: Linkedin,
+    href: "https://linkedin.com/",
+    color: "from-sky-600 to-sky-400",
+    glow: "hover:shadow-sky-500/50",
+  },
+  {
+    name: "Instagram",
+    icon: Instagram,
+    href: "https://instagram.com/officialaashishpant",
+    color: "from-pink-500 via-red-500 to-yellow-500",
+    glow: "hover:shadow-pink-500/50",
+  },
 ];
 
 const ContactSection = () => {

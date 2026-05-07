@@ -14,14 +14,16 @@ const Index = () => (
   <div className="min-h-screen">
     <Navbar />
     <HeroSection />
-    <AboutSection />
-    <EducationSection />
-    <SkillsSection />
-    <ExperienceSection />
-    <ArticlesSection />
-    <CareerObjectiveSection />
-    <LanguagesInterestsSection />
-    <ContactSection />
+    <div className="divide-y divide-border/60 [&>*]:shadow-[0_1px_0_0_hsl(var(--border)/0.4)]">
+      <AboutSection />
+      <EducationSection />
+      <SkillsSection />
+      <ExperienceSection />
+      <ArticlesSection />
+      <CareerObjectiveSection />
+      <LanguagesInterestsSection />
+      <ContactSection />
+    </div>
     <Footer />
   </div>
 );

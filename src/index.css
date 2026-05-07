@@ -59,7 +59,9 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply text-foreground font-sans antialiased;
+    background: linear-gradient(180deg, hsl(220 30% 98%) 0%, hsl(220 40% 96%) 40%, hsl(230 45% 95%) 100%);
+    background-attachment: fixed;
   }
 
   html {

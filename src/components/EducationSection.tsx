@@ -18,6 +18,14 @@ const education = [
     status: "Completed",
     icon: "🏆",
   },
+  {
+    degree: "SEE (School Level)",
+    school: "Shree Mountain EMB School (NEB Board)",
+    year: "Completed 2079",
+    gpa: "3.70",
+    status: "Completed",
+    icon: "🏫",
+  },
 ];
 
 const EducationSection = () => (

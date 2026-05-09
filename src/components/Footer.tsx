@@ -1,4 +1,5 @@
 import { ArrowUp } from "lucide-react";
+import logoA from "@/assets/logo-a.jpg";
 
 const Footer = () => (
   <footer className="relative overflow-hidden border-t border-border">
@@ -7,8 +8,8 @@ const Footer = () => (
     <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <div>
-          <a href="#" className="font-display font-bold text-xl text-primary">
-            AP<span className="gradient-text">.</span>
+          <a href="#" aria-label="Aashish Pant" className="inline-flex items-center">
+            <img src={logoA} alt="Aashish Pant logo" className="h-10 w-10 rounded-md object-cover shadow-sm" />
           </a>
           <p className="text-sm text-muted-foreground mt-1">
             Building bridges between technology and society.

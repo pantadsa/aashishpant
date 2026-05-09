@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import logoA from "@/assets/logo-a.jpg";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -31,8 +32,8 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-        <a href="#" className="font-display font-bold text-xl text-primary">
-          AP<span className="gradient-text">.</span>
+        <a href="#" aria-label="Aashish Pant" className="flex items-center">
+          <img src={logoA} alt="Aashish Pant logo" className="h-9 w-9 rounded-md object-cover shadow-sm" />
         </a>
 
         {/* Desktop */}

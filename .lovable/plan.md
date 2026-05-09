@@ -1,12 +1,16 @@
-## Replace logo with uploaded "A" image
+## Add SEE entry to Academic Journey
 
-Use the uploaded gold/black "A" logo image in place of the current "AP." text logo across the site.
+Add a third education entry to `src/components/EducationSection.tsx` for the School Level (SEE).
 
-### Steps
+### New entry
+- **Degree**: SEE (School Level)
+- **School**: Shree Mountain EMB School (NEB Board)
+- **Year**: (prior to 2079)
+- **GPA**: 3.70
+- **Status**: Completed
+- **Icon**: 🏫
 
-1. Copy `user-uploads://WhatsApp_Image_2026-05-09_at_12.19.17_PM.jpeg` → `src/assets/logo-a.jpg`.
-2. Update `src/components/Navbar.tsx`: replace the "AP." text with `<img src={logo} alt="Aashish Pant" className="h-9 w-9 rounded-md object-cover" />`.
-3. Update `src/components/Footer.tsx`: same replacement, sized similarly.
-4. Keep the link wrapper (`<a href="#">`) and existing layout/spacing untouched.
+### Change
+Append to the `education` array (after +2 Science) so the timeline shows: Bachelor → +2 Science → SEE.
 
-No other sections or styles change.
+No layout, styling, or other component changes.

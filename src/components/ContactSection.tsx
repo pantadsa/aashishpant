@@ -24,7 +24,7 @@ const socials = [
   {
     name: "LinkedIn",
     icon: Linkedin,
-    href: "https://linkedin.com/",
+    href: "https://www.linkedin.com/in/aashishpant",
     color: "from-sky-600 to-sky-400",
     glow: "hover:shadow-sky-500/50",
   },

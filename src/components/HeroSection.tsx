@@ -18,8 +18,9 @@ const HeroSection = () => (
   >
     {/* BG layers */}
     <div className="absolute inset-0">
-      <img src={heroBg} alt="" className="w-full h-full object-cover scale-105" />
-      <div className="absolute inset-0 hero-gradient opacity-85" />
+      <img src={heroBg} alt="" className="w-full h-full object-cover scale-105 opacity-40" />
+      <div className="absolute inset-0 hero-gradient opacity-95" />
+      <div className="absolute inset-0 bg-background/40" />
     </div>
 
     {/* Animated grid overlay */}
@@ -64,7 +65,7 @@ const HeroSection = () => (
         </motion.div>
 
         <motion.h1
-          className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-primary-foreground leading-[1.1] mb-5"
+          className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-white leading-[1.1] mb-5 drop-shadow-[0_2px_20px_rgba(0,0,0,0.6)]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.7 }}
@@ -81,7 +82,7 @@ const HeroSection = () => (
             />
           </span>
           <br />
-          <span className="text-primary-foreground/90">Pant</span>
+          <span className="text-white/95">Pant</span>
         </motion.h1>
 
         <motion.div
@@ -93,7 +94,7 @@ const HeroSection = () => (
           {["Computer Engineering", "Political Observer", "Social Writer"].map((tag) => (
             <span
               key={tag}
-              className="px-3 py-1 rounded-md bg-primary-foreground/10 text-primary-foreground/70 text-sm font-medium backdrop-blur-sm"
+              className="px-3 py-1 rounded-md bg-white/10 border border-white/15 text-white/90 text-sm font-medium backdrop-blur-sm"
             >
               {tag}
             </span>
@@ -101,7 +102,7 @@ const HeroSection = () => (
         </motion.div>
 
         <motion.p
-          className="text-primary-foreground/50 max-w-lg mb-8 leading-relaxed text-lg"
+          className="text-white/80 max-w-lg mb-8 leading-relaxed text-lg drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
@@ -115,7 +116,7 @@ const HeroSection = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
         >
-          <Button size="lg" className="gap-2 shadow-lg shadow-accent/20 px-6" asChild>
+          <Button size="lg" className="gap-2 shadow-lg shadow-accent/30 px-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 text-white hover:opacity-90 border-0" asChild>
             <a href="#writing">
               <ArrowDown size={16} /> View My Work
             </a>
@@ -123,7 +124,7 @@ const HeroSection = () => (
           <Button
             size="lg"
             variant="outline"
-            className="gap-2 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 backdrop-blur-sm px-6"
+            className="gap-2 border-white/30 bg-white/5 text-white hover:bg-white/15 hover:text-white backdrop-blur-sm px-6"
             asChild
           >
             <a href="#contact">
@@ -174,7 +175,7 @@ const HeroSection = () => (
     {/* Scroll indicator */}
     <motion.a
       href="#about"
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-primary-foreground/40 hover:text-primary-foreground/60 transition-colors"
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-white/60 hover:text-white transition-colors"
       animate={{ y: [0, 8, 0] }}
       transition={{ duration: 2, repeat: Infinity }}
     >

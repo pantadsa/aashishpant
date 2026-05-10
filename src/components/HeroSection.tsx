@@ -116,21 +116,18 @@ const HeroSection = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
         >
-          <Button size="lg" className="gap-2 shadow-lg shadow-accent/30 px-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 text-white hover:opacity-90 border-0" asChild>
-            <a href="#writing">
-              <ArrowDown size={16} /> View My Work
-            </a>
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="gap-2 border-white/30 bg-white/5 text-white hover:bg-white/15 hover:text-white backdrop-blur-sm px-6"
-            asChild
+          <a
+            href="#writing"
+            className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-lg font-semibold text-sm bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/40 hover:shadow-purple-500/60 hover:scale-105 hover:brightness-110 transition-all duration-300"
           >
-            <a href="#contact">
-              <Mail size={16} /> Contact Me
-            </a>
-          </Button>
+            <ArrowDown size={16} /> View My Work
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-lg font-semibold text-sm border border-white/40 bg-white/5 text-white backdrop-blur-md hover:bg-white/15 hover:border-white/70 hover:scale-105 transition-all duration-300"
+          >
+            <Mail size={16} /> Contact Me
+          </a>
         </motion.div>
       </motion.div>
 

@@ -79,7 +79,7 @@ const EducationSection = () => (
                     <div className="absolute top-0 right-0 w-24 h-24 opacity-5 rounded-bl-full" style={{ background: "var(--gradient-accent)" }} />
                     
                     <div className="flex items-center gap-2 mb-3">
-                      <span className={`text-xs font-semibold px-3 py-1 rounded-full ${e.gpa ? "bg-emerald-500/10 text-emerald-600" : "bg-accent/10 text-accent"}`}>
+                      <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${e.gpa ? "bg-emerald-500/10 text-emerald-300 border-emerald-400/30" : "bg-accent/10 text-accent border-accent/30"}`}>
                         {e.status}
                       </span>
                     </div>

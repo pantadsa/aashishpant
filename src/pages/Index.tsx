@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import ScrollProgress from "@/components/ScrollProgress";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import EducationSection from "@/components/EducationSection";
@@ -12,6 +13,7 @@ import Footer from "@/components/Footer";
 
 const Index = () => (
   <div className="min-h-screen relative">
+    <ScrollProgress />
     <Navbar />
     <HeroSection />
     <div className="relative">

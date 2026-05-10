@@ -80,7 +80,7 @@ const ArticlesSection = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="group bg-card rounded-2xl overflow-hidden border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition-all duration-500 hover:-translate-y-2 flex flex-col"
+              className="group glass-card !p-0 overflow-hidden flex flex-col hover-lift"
             >
               <div className="relative overflow-hidden aspect-[16/10]">
                 <img
@@ -91,8 +91,8 @@ const ArticlesSection = () => (
                   height={640}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-60" />
-                <span className="absolute top-4 left-4 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full bg-card/90 backdrop-blur text-primary">
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent opacity-90" />
+                <span className="absolute top-4 left-4 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full bg-background/80 backdrop-blur border border-accent/30 text-accent">
                   {a.category}
                 </span>
               </div>
@@ -107,7 +107,7 @@ const ArticlesSection = () => (
                   </span>
                 </div>
 
-                <h3 className="font-display font-bold text-xl text-primary leading-snug mb-3 group-hover:text-accent transition-colors">
+                <h3 className="font-display font-bold text-xl text-foreground leading-snug mb-3 group-hover:text-accent transition-colors">
                   {a.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">

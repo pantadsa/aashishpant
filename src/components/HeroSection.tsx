@@ -141,14 +141,23 @@ const HeroSection = () => (
       >
         {/* Rotating ring */}
         <motion.div
-          className="absolute -inset-4 rounded-full border-2 border-dashed border-accent/20"
+          className="absolute -inset-4 rounded-full border-2 border-dashed border-accent/25"
           animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
         />
-        {/* Accent ring glow */}
-        <div className="absolute -inset-1 rounded-full opacity-40 blur-md" style={{ background: "var(--gradient-accent)" }} />
-        
-        <div className="relative w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-accent/40">
+        {/* Counter-rotating ring */}
+        <motion.div
+          className="absolute -inset-8 rounded-full border border-white/10"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        />
+        {/* Dual red+blue glow */}
+        <div
+          className="absolute -inset-2 rounded-full opacity-60 blur-2xl"
+          style={{ background: "linear-gradient(135deg, hsl(var(--np-red) / 0.7), hsl(var(--np-blue) / 0.7))" }}
+        />
+
+        <div className="relative w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-white/30 shadow-[0_30px_80px_-20px_hsl(var(--np-blue)/0.5)]">
           <img
             src={profilePhoto}
             alt="Aashish Pant"

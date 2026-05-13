@@ -119,12 +119,15 @@ const ContactSection = () => {
             {/* Form */}
             <motion.form
               onSubmit={handleSubmit}
-              className="glass-card space-y-4 relative overflow-hidden"
+              className="glass-card glass-card--np space-y-4 relative overflow-hidden"
               initial={{ opacity: 0, x: 15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="absolute top-0 left-0 right-0 h-1 rounded-t-xl" style={{ background: "var(--gradient-accent)" }} />
+              <div
+                className="absolute top-0 left-0 right-0 h-1 rounded-t-xl"
+                style={{ background: "var(--gradient-np)" }}
+              />
 
               <h3 className="font-display font-bold text-lg pt-2">Send a Message</h3>
 
@@ -133,7 +136,7 @@ const ContactSection = () => {
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 maxLength={100}
-                className="bg-secondary/50 border-border/50 focus:border-accent"
+                className="glow-input"
               />
               <Input
                 type="email"
@@ -141,7 +144,7 @@ const ContactSection = () => {
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 maxLength={255}
-                className="bg-secondary/50 border-border/50 focus:border-accent"
+                className="glow-input"
               />
               <Textarea
                 placeholder="Your Message"
@@ -149,11 +152,15 @@ const ContactSection = () => {
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 maxLength={1000}
-                className="bg-secondary/50 border-border/50 focus:border-accent resize-none"
+                className="glow-input resize-none"
               />
-              <Button type="submit" className="w-full gap-2 shadow-lg shadow-accent/20">
-                <Send size={16} /> Send Message
-              </Button>
+              <button
+                type="submit"
+                className="group w-full inline-flex items-center justify-center gap-2 h-11 rounded-lg text-sm font-semibold text-white bg-[linear-gradient(135deg,hsl(var(--np-red)),hsl(var(--np-blue)))] shadow-[0_10px_30px_-5px_hsl(var(--np-blue)/0.5)] hover:shadow-[0_15px_40px_-5px_hsl(var(--np-red)/0.5)] hover:scale-[1.02] transition-all"
+              >
+                <Send size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                Send Message
+              </button>
             </motion.form>
           </div>
         </motion.div>

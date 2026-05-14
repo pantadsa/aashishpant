@@ -3,7 +3,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
+import Layout from "@/components/Layout";
+import Home from "./pages/Home";
+import AboutPage from "./pages/AboutPage";
+import SkillsExperiencePage from "./pages/SkillsExperiencePage";
+import PoliticalViewPage from "./pages/PoliticalViewPage";
+import ArticlesPage from "./pages/ArticlesPage";
+import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -15,9 +21,16 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/skills" element={<SkillsExperiencePage />} />
+            <Route path="/political-view" element={<PoliticalViewPage />} />
+            <Route path="/articles" element={<ArticlesPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

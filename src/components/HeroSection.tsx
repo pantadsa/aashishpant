@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Mail, ChevronDown } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import RotatingTitle from "@/components/RotatingTitle";
+import NepalMapBg from "@/components/NepalMapBg";
 const profilePhoto = "https://i.postimg.cc/MHC13Mcm/IMG-1185.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
 
@@ -11,6 +11,8 @@ const floatingVariants = {
     transition: { duration: 4, repeat: Infinity, ease: "easeInOut" },
   },
 };
+
+const headline = ["Hi,", "I'm", "Aashish", "Pant"];
 
 const HeroSection = () => (
   <section
@@ -29,6 +31,9 @@ const HeroSection = () => (
       backgroundImage: "linear-gradient(hsl(217 91% 60% / 0.3) 1px, transparent 1px), linear-gradient(90deg, hsl(217 91% 60% / 0.3) 1px, transparent 1px)",
       backgroundSize: "60px 60px",
     }} />
+
+    {/* Nepal map outline */}
+    <NepalMapBg className="absolute inset-x-0 bottom-10 mx-auto w-[90%] max-w-5xl h-[40%] opacity-30" />
 
     {/* Glowing orbs */}
     <motion.div
@@ -65,70 +70,69 @@ const HeroSection = () => (
           </span>
         </motion.div>
 
-        <motion.h1
-          className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-white leading-[1.1] mb-5 drop-shadow-[0_2px_20px_rgba(0,0,0,0.6)]"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
-        >
-          Hi, I'm{" "}
-          <span className="relative">
-            <span className="gradient-text">Aashish</span>
+        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-white leading-[1.1] mb-5 drop-shadow-[0_2px_20px_rgba(0,0,0,0.6)]">
+          {headline.map((word, i) => (
             <motion.span
-              className="absolute -bottom-1 left-0 h-1 rounded-full"
-              style={{ background: "var(--gradient-accent)" }}
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
-              transition={{ delay: 1, duration: 0.6 }}
-            />
-          </span>
-          <br />
-          <span className="text-white/95">Pant</span>
-        </motion.h1>
+              key={i}
+              initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ delay: 0.3 + i * 0.12, duration: 0.6 }}
+              className="inline-block mr-3"
+            >
+              {word === "Aashish" ? (
+                <span className="relative">
+                  <span className="gradient-text">{word}</span>
+                  <motion.span
+                    className="absolute -bottom-1 left-0 h-1 rounded-full"
+                    style={{ background: "var(--gradient-accent)" }}
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ delay: 1.2, duration: 0.6 }}
+                  />
+                </span>
+              ) : (
+                <span className={word === "Pant" ? "text-white/95" : ""}>{word}</span>
+              )}
+            </motion.span>
+          ))}
+        </h1>
 
         <motion.div
-          className="flex flex-wrap gap-2 justify-center md:justify-start mb-4"
+          className="mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.9 }}
         >
-          {["Computer Engineering", "Political Observer", "Social Writer"].map((tag) => (
-            <span
-              key={tag}
-              className="px-3 py-1 rounded-md bg-white/10 border border-white/15 text-white/90 text-sm font-medium backdrop-blur-sm"
-            >
-              {tag}
-            </span>
-          ))}
+          <RotatingTitle />
         </motion.div>
 
         <motion.p
           className="text-white/80 max-w-lg mb-8 leading-relaxed text-lg drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 1 }}
         >
-          Amplifying Youth Voices through Technology and Digital Media
+          Amplifying Youth Voices through Technology and Digital Media.
         </motion.p>
 
         <motion.div
           className="flex flex-wrap gap-4 justify-center md:justify-start"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
+          transition={{ delay: 1.1 }}
         >
-          <Link
-            to="/articles"
+          <a
+            href="#articles"
             className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-lg font-semibold text-sm bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/40 hover:shadow-purple-500/60 hover:scale-105 hover:brightness-110 transition-all duration-300"
           >
             <ArrowDown size={16} /> View My Work
-          </Link>
-          <Link
-            to="/contact"
+          </a>
+          <a
+            href="#contact"
             className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-lg font-semibold text-sm border border-white/40 bg-white/5 text-white backdrop-blur-md hover:bg-white/15 hover:border-white/70 hover:scale-105 transition-all duration-300"
           >
             <Mail size={16} /> Contact Me
-          </Link>
+          </a>
         </motion.div>
       </motion.div>
 
@@ -140,19 +144,16 @@ const HeroSection = () => (
         transition={{ duration: 0.8, delay: 0.3 }}
         variants={floatingVariants}
       >
-        {/* Rotating ring */}
         <motion.div
           className="absolute -inset-4 rounded-full border-2 border-dashed border-accent/25"
           animate={{ rotate: 360 }}
           transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
         />
-        {/* Counter-rotating ring */}
         <motion.div
           className="absolute -inset-8 rounded-full border border-white/10"
           animate={{ rotate: -360 }}
           transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
         />
-        {/* Dual red+blue glow */}
         <div
           className="absolute -inset-2 rounded-full opacity-60 blur-2xl"
           style={{ background: "linear-gradient(135deg, hsl(var(--np-red) / 0.7), hsl(var(--np-blue) / 0.7))" }}
@@ -168,7 +169,6 @@ const HeroSection = () => (
           />
         </div>
 
-        {/* Floating badge */}
         <motion.div
           className="absolute -bottom-2 -right-2 md:bottom-2 md:right-0 px-3 py-1.5 rounded-lg bg-card/90 backdrop-blur-sm shadow-lg border border-border text-xs font-medium"
           animate={{ y: [0, -6, 0] }}
@@ -185,13 +185,13 @@ const HeroSection = () => (
       animate={{ y: [0, 8, 0] }}
       transition={{ duration: 2, repeat: Infinity }}
     >
-      <Link
-        to="/about"
+      <a
+        href="#about"
         className="flex flex-col items-center gap-1 text-white/60 hover:text-white transition-colors"
       >
         <span className="text-xs tracking-wider uppercase">Explore</span>
         <ChevronDown size={18} />
-      </Link>
+      </a>
     </motion.div>
   </section>
 );

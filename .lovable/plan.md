@@ -1,64 +1,63 @@
-## Premium UI/UX Upgrade
+## Goal
 
-A focused visual polish across the existing portfolio. Content stays identical; only styling, spacing, motion, and a few global UX touches change.
+Restore the site to a single scrolling page containing every existing section, then push the visual/interaction quality to "ultra-premium": cinematic dark theme, glassmorphism, Nepal red/blue glow accents, rotating hero titles, mouse-glow, particles, and scroll-reveal animations. All textual content stays exactly as-is.
 
-### 1. Global foundations (`src/index.css` + `tailwind.config.ts`)
-- Refine type scale: tighter `tracking-tight` headings, larger `section-title` (`text-4xl md:text-6xl`), magazine-style `text-balance` on titles.
-- Stronger `.glass-card`: increase blur to 24px, dual-layer gradient border (red→blue tint variant `.glass-card--np` for Nepal sections), inner highlight, hover glow uses red+blue mix.
-- New utilities: `.glow-border`, `.glow-input`, `.text-shine`, `.parallax-slow`, `.noise` (SVG noise overlay), `.mouse-glow` target.
-- Add keyframes: `text-shine`, `pulse-glow`, `particle-rise`, `aurora`.
-- Smooth scrolling already on; add `scroll-margin-top: 6rem` to all section ids for clean anchor jumps.
+## 1. Routing → single page
 
-### 2. New global UX components
-- `src/components/MouseGlow.tsx` — fixed radial gradient that follows cursor (desktop only, disabled via `prefers-reduced-motion`).
-- `src/components/Particles.tsx` — lightweight CSS-only floating dot field (no canvas), used as backdrop on Hero + Contact + Footer.
-- `src/components/AuroraBackground.tsx` — animated red/blue gradient mesh layer for the page wrapper.
-- Mount all three in `src/pages/Index.tsx` behind content (`-z-10`).
+- `src/App.tsx`: collapse routes. Keep `Layout` wrapping a single `/` → `Index`, plus `*` → `NotFound`. Drop `/about`, `/skills`, `/political-view`, `/articles`, `/contact` route entries.
+- Delete: `src/pages/AboutPage.tsx`, `SkillsExperiencePage.tsx`, `PoliticalViewPage.tsx`, `ArticlesPage.tsx`, `ContactPage.tsx`, `Home.tsx` (consolidate into `Index.tsx`).
+- `src/pages/Index.tsx`: render every section in order with anchor ids:
+  `#hero → #about → #education → #skills → #experience → #political-view → #articles → #career-objective → #languages-interests → #contact`.
+- `Layout.tsx`: keep `AuroraBackground`, `MouseGlow`, `Particles`, `ScrollProgress`, `Navbar`, `Footer`, but remove the `AnimatePresence` per-route wrapper (no longer needed).
 
-### 3. Navbar (`Navbar.tsx`)
-- Convert to floating pill: rounded-full, glass background, subtle gradient border, sits 12px from top once scrolled.
-- Active link underline indicator (animated via Framer Motion `layoutId`).
-- Resume button → gradient (red→blue) with glow on hover.
-- Mobile menu: full-screen glass sheet with staggered link reveal.
+## 2. Navigation → anchor links
 
-### 4. Hero (`HeroSection.tsx`)
-- Cinematic headline: animated word-by-word reveal, shimmering gradient on "Aashish".
-- Replace static tags with subtle marquee strip below subtitle.
-- Profile photo: add second counter-rotating ring + soft red+blue dual glow.
-- Floating mini-cards (years, role, location) around photo.
-- Upgrade scroll indicator to animated mouse-wheel SVG.
+- `src/components/Navbar.tsx`: switch `NavLink`/`Link` items to hash anchors (`#about`, `#skills`, …). Add IntersectionObserver-based active-section highlight with animated underline (Framer Motion `layoutId`). Mobile sheet uses the same anchors and closes on click. Keep the floating glass pill style.
+- `src/components/Footer.tsx`: replace route links with the same anchor hrefs. Keep the three-column premium layout and add the tagline `"Building bridges between technology and society. Amplifying youth voices through code and words."` (already part of content goals).
+- `src/components/HeroSection.tsx` CTAs: `View My Work → #articles`, `Contact Me → #contact`, scroll indicator → `#about`. Use plain `<a href="#…">` with smooth scroll (already enabled in `index.css`).
 
-### 5. Section headers (shared pattern)
-- Centered eyebrow chip, oversized gradient heading with shine sweep, decorative dual-line divider with center dot.
-- Update: `AboutSection`, `EducationSection`, `SkillsSection`, `ExperienceSection`, `PoliticalViewSection`, `ArticlesSection`, `CareerObjectiveSection`, `LanguagesInterestsSection`, `ContactSection`.
+## 3. Hero upgrade
 
-### 6. Cards & timelines
-- `EducationSection` / `ExperienceSection`: vertical timeline with gradient rail, pulsing nodes, glass cards with red/blue left-border accent and hover lift + shine.
-- `SkillsSection`: progress bars get glow trail + animated shimmer; level chip becomes gradient pill.
-- `ArticlesSection`: image hover zoom already present — add gradient overlay reveal with "Read" chevron, magazine-style category label (uppercase, gradient underline), refined meta row.
-- `LanguagesInterestsSection` / `CareerObjectiveSection`: glass tiles with icon halos.
+- Replace the three static chip tags with a **rotating title** component cycling every ~2.6s through:
+  `Computer Engineering Student`, `Political Observer`, `Social Writer`, `Youth Voice Advocate` (Framer Motion `AnimatePresence` with y-fade).
+- Tagline stays: "Amplifying Youth Voices through Technology and Digital Media."
+- Add a faint SVG Nepal map outline behind the profile column (absolute, low opacity, masked with radial gradient).
+- Keep dual rotating rings + red/blue glow on the photo; add a soft particle cluster localized to the hero.
+- Animated word-by-word reveal on the H1 (stagger children).
 
-### 7. Contact (`ContactSection.tsx`)
-- Form: glass panel with animated gradient border ring, inputs get focus glow (red→blue), floating labels feel.
-- Submit button: gradient with hover glow + arrow micro-animation.
-- Social icons: circular glass with gradient ring on hover, scale + glow.
-- Background: aurora + particles layer.
+## 4. Section-wide polish (apply consistently)
 
-### 8. Footer (`Footer.tsx`)
-- Three-column premium layout: brand + tagline | quick links | socials.
-- Top edge: glowing gradient hairline divider.
-- Back-to-top: floating glass circle with gradient ring, keeps existing behavior.
-- Bottom row: subtle copyright with gradient dot separators.
+- Standard section header pattern: eyebrow chip + oversized `gradient-text` heading + dual-line divider with center dot.
+- Wrap each section's main content in a small `MotionReveal` helper (`whileInView` fade-up, `once: true`).
+- Cards adopt `.glass-card` / `.glass-card--np` with hover lift + shine.
 
-### 9. Motion polish
-- Wrap repeating reveal logic in a tiny `MotionReveal` helper to keep components clean (fade-up, stagger).
-- Respect `prefers-reduced-motion` in MouseGlow, Particles, Aurora.
+Section-specific touches (visual only — no content changes):
 
-### 10. Files to touch
-- Edit: `src/index.css`, `tailwind.config.ts`, `src/pages/Index.tsx`, `Navbar.tsx`, `HeroSection.tsx`, `AboutSection.tsx`, `EducationSection.tsx`, `SkillsSection.tsx`, `ExperienceSection.tsx`, `ArticlesSection.tsx`, `PoliticalViewSection.tsx`, `CareerObjectiveSection.tsx`, `LanguagesInterestsSection.tsx`, `ContactSection.tsx`, `Footer.tsx`.
-- Create: `MouseGlow.tsx`, `Particles.tsx`, `AuroraBackground.tsx`, `MotionReveal.tsx`.
+- **About**: two-column premium card; floating animated stat tiles (counters animate on view).
+- **Education**: vertical timeline with gradient rail, pulsing nodes, glass cards.
+- **Skills**: animated progress bars (width animates on scroll into view) inside futuristic cards with icon halos.
+- **Experience**: glass icon cards with hover elevation and red→blue gradient accent border.
+- **Political View**: keep existing; tighten with animated quote mark, glowing border, subtle Nepal-map backdrop.
+- **Articles**: featured-first magazine layout (1 large + grid), category tags, hover image zoom.
+- **Career Objective**: centered cinematic quote with glowing divider and aurora backdrop.
+- **Languages & Interests**: interactive chip/card grid with glow on hover.
+- **Contact**: already glass + glow inputs; add animated gradient ring around panel and circular glass social icons with gradient ring on hover.
+- **Footer**: glowing top hairline, floating logo circle, animated divider, premium typography.
 
-### Out of scope
-- No content/text/link changes.
-- No structural section reordering.
-- No new dependencies (uses existing framer-motion, tailwind, lucide).
+## 5. Global UX
+
+- Smooth scrolling already on (`html { scroll-behavior: smooth }`); add JS offset compensation already handled via `scroll-margin-top: 6rem`.
+- `ScrollProgress` stays at top.
+- `MouseGlow` desktop-only (already gated).
+- Add a one-time loading splash: fixed overlay with logo + gradient ring that fades after `window.load` (≤800ms).
+- Respect `prefers-reduced-motion` (already partially in CSS) — extend to disable rotating titles and parallax.
+
+## 6. Files touched
+
+- Edit: `src/App.tsx`, `src/pages/Index.tsx`, `src/components/Layout.tsx`, `Navbar.tsx`, `Footer.tsx`, `HeroSection.tsx`, `AboutSection.tsx`, `EducationSection.tsx`, `SkillsSection.tsx`, `ExperienceSection.tsx`, `PoliticalViewSection.tsx`, `ArticlesSection.tsx`, `CareerObjectiveSection.tsx`, `LanguagesInterestsSection.tsx`, `ContactSection.tsx`, `src/index.css` (small additions: nepal-map utility, splash fade).
+- Create: `src/components/RotatingTitle.tsx`, `src/components/MotionReveal.tsx`, `src/components/NepalMapBg.tsx`, `src/components/LoadingSplash.tsx`.
+- Delete: `src/pages/Home.tsx`, `AboutPage.tsx`, `SkillsExperiencePage.tsx`, `PoliticalViewPage.tsx`, `ArticlesPage.tsx`, `ContactPage.tsx`.
+
+## Out of scope
+
+- No text/content edits, no new dependencies, no backend, no theme toggle changes.

@@ -1,13 +1,12 @@
 import { ArrowUp, Mail, MapPin, Phone, Facebook, Linkedin, Instagram } from "lucide-react";
-import { Link } from "react-router-dom";
 import logoA from "@/assets/logo-a.jpg";
 
 const quickLinks = [
-  { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
-  { label: "Skills", to: "/skills" },
-  { label: "Articles", to: "/articles" },
-  { label: "Contact", to: "/contact" },
+  { label: "Home", id: "hero" },
+  { label: "About", id: "about" },
+  { label: "Skills", id: "skills" },
+  { label: "Articles", id: "articles" },
+  { label: "Contact", id: "contact" },
 ];
 const socials = [
   { Icon: Facebook, href: "https://facebook.com/aashish.pant.02/", label: "Facebook" },
@@ -55,14 +54,14 @@ const Footer = () => (
           </h4>
           <ul className="space-y-2">
             {quickLinks.map((l) => (
-              <li key={l.to}>
-                <Link
-                  to={l.to}
+              <li key={l.id}>
+                <a
+                  href={`#${l.id}`}
                   className="group inline-flex items-center gap-2 text-sm text-foreground/70 hover:text-white transition-colors"
                 >
                   <span className="h-px w-3 bg-gradient-to-r from-[hsl(var(--np-red))] to-[hsl(var(--np-blue))] transition-all group-hover:w-6" />
                   {l.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>

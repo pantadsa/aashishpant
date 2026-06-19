@@ -53,7 +53,7 @@ const HeroSection = () => (
     <div className="relative z-10 section-container flex flex-col md:flex-row items-center gap-12 md:gap-16 pt-20">
       {/* Text */}
       <motion.div
-        className="flex-1 text-center md:text-left"
+        className="flex-1 text-center md:text-left max-w-2xl"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -62,7 +62,7 @@ const HeroSection = () => (
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 backdrop-blur-sm mb-6"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 backdrop-blur-sm mb-5"
         >
           <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
           <span className="text-accent text-xs font-medium tracking-wider uppercase">
@@ -70,7 +70,7 @@ const HeroSection = () => (
           </span>
         </motion.div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-white leading-[1.1] mb-5 drop-shadow-[0_2px_20px_rgba(0,0,0,0.6)]">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-semibold text-white leading-[1.05] tracking-tight mb-4">
           {headline.map((word, i) => (
             <motion.span
               key={i}
@@ -98,7 +98,7 @@ const HeroSection = () => (
         </h1>
 
         <motion.div
-          className="mb-4"
+          className="mb-5"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
@@ -107,7 +107,7 @@ const HeroSection = () => (
         </motion.div>
 
         <motion.p
-          className="text-white/80 max-w-lg mb-8 leading-relaxed text-lg drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]"
+          className="text-white/80 max-w-lg mb-8 leading-relaxed text-base md:text-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
@@ -122,14 +122,14 @@ const HeroSection = () => (
           transition={{ delay: 1.1 }}
         >
           <a
-            href="#articles"
-            className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-lg font-semibold text-sm bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/40 hover:shadow-purple-500/60 hover:scale-105 hover:brightness-110 transition-all duration-300"
+            href="#projects"
+            className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-xl font-semibold text-sm text-white bg-[linear-gradient(135deg,hsl(var(--np-red)),hsl(var(--np-blue)))] shadow-[0_10px_30px_-5px_hsl(var(--np-blue)/0.5)] hover:shadow-[0_15px_40px_-5px_hsl(var(--np-red)/0.5)] hover:scale-105 transition-all duration-300"
           >
             <ArrowDown size={16} /> View My Work
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-lg font-semibold text-sm border border-white/40 bg-white/5 text-white backdrop-blur-md hover:bg-white/15 hover:border-white/70 hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-xl font-semibold text-sm border border-white/40 bg-white/5 text-white backdrop-blur-md hover:bg-white/15 hover:border-white/70 hover:scale-105 transition-all duration-300"
           >
             <Mail size={16} /> Contact Me
           </a>

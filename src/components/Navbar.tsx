@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logoA from "@/assets/logo-a.jpg";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { label: "Home", id: "hero" },
   { label: "About", id: "about" },
   { label: "Skills", id: "skills" },
-  { label: "Political View", id: "political-view" },
+  { label: "Projects", id: "projects" },
   { label: "Articles", id: "articles" },
   { label: "Contact", id: "contact" },
 ];
@@ -98,13 +99,13 @@ const Navbar = () => {
                   onClick={go(l.id)}
                   onMouseEnter={() => setHovered(l.id)}
                   className={`relative text-sm font-medium px-3.5 py-2 rounded-full transition-colors ${
-                    isActive ? "text-white" : "text-foreground/70 hover:text-white"
+                    isActive ? "text-foreground" : "text-foreground/70 hover:text-foreground"
                   }`}
                 >
                   {hovered === l.id && (
                     <motion.span
                       layoutId="nav-hover"
-                      className="absolute inset-0 rounded-full bg-white/5 border border-white/10"
+                      className="absolute inset-0 rounded-full bg-foreground/5 border border-border/60"
                       transition={{ type: "spring", stiffness: 350, damping: 30 }}
                     />
                   )}
@@ -122,19 +123,23 @@ const Navbar = () => {
             <a
               href="#contact"
               onClick={go("contact")}
-              className="ml-2 inline-flex items-center gap-2 h-9 px-4 rounded-full text-xs font-semibold text-white bg-[linear-gradient(135deg,hsl(var(--np-red)),hsl(var(--np-blue)))] shadow-[0_0_20px_hsl(var(--np-blue)/0.4)] hover:shadow-[0_0_28px_hsl(var(--np-red)/0.5)] hover:scale-[1.03] transition-all"
+              className="ml-2 inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-xs font-semibold text-white bg-[linear-gradient(135deg,hsl(var(--np-red)),hsl(var(--np-blue)))] shadow-[0_0_20px_hsl(var(--np-blue)/0.4)] hover:shadow-[0_0_28px_hsl(var(--np-red)/0.5)] hover:scale-[1.03] transition-all"
             >
-              <Download size={13} /> Resume
+              <Sparkles size={13} /> Hire Me
             </a>
+            <ThemeToggle className="ml-2" />
           </div>
 
-          <button
-            className="lg:hidden text-foreground p-2 rounded-lg hover:bg-white/5 transition-colors"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          <div className="lg:hidden flex items-center gap-1">
+            <ThemeToggle />
+            <button
+              className="text-foreground p-2 rounded-lg hover:bg-foreground/5 transition-colors"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </nav>
       </div>
 
@@ -159,8 +164,8 @@ const Navbar = () => {
                     transition={{ delay: i * 0.04 }}
                     className={`block py-2.5 px-3 text-sm font-medium rounded-lg transition-all ${
                       isActive
-                        ? "text-white bg-white/10"
-                        : "text-foreground/80 hover:text-white hover:bg-white/5"
+                        ? "text-foreground bg-foreground/10"
+                        : "text-foreground/80 hover:text-foreground hover:bg-foreground/5"
                     }`}
                   >
                     {l.label}
@@ -172,7 +177,7 @@ const Navbar = () => {
                 onClick={go("contact")}
                 className="mt-2 w-full inline-flex items-center justify-center gap-2 h-10 rounded-lg text-xs font-semibold text-white bg-[linear-gradient(135deg,hsl(var(--np-red)),hsl(var(--np-blue)))]"
               >
-                <Download size={14} /> Resume
+                <Sparkles size={14} /> Hire Me
               </a>
             </div>
           </motion.div>

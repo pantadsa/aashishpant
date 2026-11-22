@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "@/components/adaptive-motion";
 import { Globe, Sparkles, CheckCircle } from "lucide-react";
 
 const languages = [

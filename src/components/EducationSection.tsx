@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "@/components/adaptive-motion";
 import { GraduationCap, Calendar, Trophy } from "lucide-react";
 
 const education = [

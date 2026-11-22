@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "@/components/adaptive-motion";
 import { Quote } from "lucide-react";
 
 const paragraphs = [

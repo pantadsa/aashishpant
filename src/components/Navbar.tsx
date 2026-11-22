@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoA from "@/assets/logo-a.jpg";
+import logoA from "@/assets/logo-a.jpg?w=96&format=webp&quality=90";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [

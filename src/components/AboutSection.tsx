@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "@/components/adaptive-motion";
 import { MapPin, Lightbulb, Users, Code, PenLine } from "lucide-react";
 
 const highlights = [

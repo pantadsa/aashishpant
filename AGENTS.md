@@ -1,0 +1,3 @@
+# Performance architecture
+- Use the adaptive motion adapter for portfolio animations; mobile/touch and reduced-motion render static final states without animation observers, while desktop retains Framer Motion behavior.
+- Use build-time responsive WebP variants for bundled images and asset pointers for downloaded media; keep critical hero images eager and article images lazy to reduce mobile transfer without layout shifts.

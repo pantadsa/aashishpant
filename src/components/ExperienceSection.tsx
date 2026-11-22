@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "@/components/adaptive-motion";
 import { Award, Presentation, MessageCircle, ArrowUpRight } from "lucide-react";
 
 const items = [

@@ -1,10 +1,10 @@
-import { motion } from "framer-motion";
+import { motion } from "@/components/adaptive-motion";
 import { ArrowUpRight, Clock, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import youthImg from "@/assets/article-youth-future.jpg";
-import genzImg from "@/assets/article-genz-politics.jpg";
-import voteImg from "@/assets/article-vote-rebellion.jpg";
-import comingSoonImg from "@/assets/article-coming-soon.jpg";
+import youthImg from "@/assets/article-youth-future.jpg?w=480;768;1024&format=webp&quality=85&as=srcset";
+import genzImg from "@/assets/article-genz-politics.jpg?w=480;768;1024&format=webp&quality=85&as=srcset";
+import voteImg from "@/assets/article-vote-rebellion.jpg?w=480;768;1024&format=webp&quality=85&as=srcset";
+import comingSoonImg from "@/assets/article-coming-soon.jpg?w=480;768;1024&format=webp&quality=85&as=srcset";
 
 const articles = [
   {
@@ -84,7 +84,10 @@ const ArticlesSection = () => (
             >
               <div className="relative overflow-hidden aspect-[16/10]">
                 <img
-                  src={a.image}
+                  src={a.image.split(",").at(-1)?.trim().split(" ")[0]}
+                  srcSet={a.image}
+                  sizes="(min-width: 1024px) 480px, (min-width: 768px) calc((100vw - 96px) / 2), calc(100vw - 40px)"
+                  decoding="async"
                   alt={a.title}
                   loading="lazy"
                   width={1024}

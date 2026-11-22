@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -161,4 +159,44 @@
       transition-duration: 0.01ms !important;
     }
   }
+}
+
+/* Preserve desktop styling; eliminate costly compositing and idle motion on
+   phones, touch tablets, and devices requesting reduced motion. */
+@media (max-width: 767px), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition-duration: 0s !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .absolute[class*=" blur-"], .absolute[class^="blur-"], .mobile-static-decoration {
+    display: none;
+  }
+
+  .glass-card, [class*="shadow-["] {
+    box-shadow: none !important;
+  }
+
+  .section-container, .glass-card, .grid > *, .flex > * {
+    min-width: 0;
+  }
+
+  #contact .text-sm, footer p {
+    overflow-wrap: anywhere;
+  }
+
+  #education .mt-3.flex {
+    flex-wrap: wrap;
+  }
+
+  /* Avoid synthesized hover scale sticking after a tap. */
+  .hover-lift:hover, img.group-hover\:scale-110 {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }

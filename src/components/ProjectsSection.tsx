@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "@/components/adaptive-motion";
 import { ExternalLink, Github, Code2, Newspaper, Cpu } from "lucide-react";
 
 const projects = [

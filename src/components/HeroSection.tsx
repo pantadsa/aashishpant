@@ -1,9 +1,16 @@
-import { motion } from "framer-motion";
+import { motion } from "@/components/adaptive-motion";
 import { ArrowDown, Mail, ChevronDown } from "lucide-react";
 import RotatingTitle from "@/components/RotatingTitle";
 import NepalMapBg from "@/components/NepalMapBg";
-const profilePhoto = "https://i.postimg.cc/MHC13Mcm/IMG-1185.jpg";
-import heroBg from "@/assets/hero-bg.jpg";
+import profileMobile from "@/assets/aashish-profile-320.webp.asset.json";
+import profileDesktop from "@/assets/aashish-profile-600.webp.asset.json";
+import heroBg from "@/assets/hero-bg.jpg?w=1920&format=webp&quality=85";
+import heroMobile from "@/assets/hero-bg.jpg?w=768&format=webp&quality=85";
+import heroTablet from "@/assets/hero-bg.jpg?w=1280&format=webp&quality=85";
+
+// The asset CDN path is served by Lovable hosting, not the local Vite server.
+const profileMobileUrl = new URL(profileMobile.url, "https://aashishpant.lovable.app").href;
+const profileDesktopUrl = new URL(profileDesktop.url, "https://aashishpant.lovable.app").href;
 
 const floatingVariants = {
   animate: {
@@ -21,7 +28,7 @@ const HeroSection = () => (
   >
     {/* BG layers */}
     <div className="absolute inset-0">
-      <img src={heroBg} alt="" className="w-full h-full object-cover scale-105 opacity-40" />
+      <img src={heroBg} srcSet={`${heroMobile} 768w, ${heroTablet} 1280w, ${heroBg} 1920w`} sizes="100vw" alt="" width={1920} height={1080} decoding="async" fetchPriority="high" className="w-full h-full object-cover scale-105 opacity-40" />
       <div className="absolute inset-0 hero-gradient opacity-95" />
       <div className="absolute inset-0 bg-background/40" />
     </div>
@@ -161,11 +168,14 @@ const HeroSection = () => (
 
         <div className="relative w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-white/30 shadow-[0_30px_80px_-20px_hsl(var(--np-blue)/0.5)]">
           <img
-            src={profilePhoto}
+            src={profileDesktopUrl}
+            srcSet={`${profileMobileUrl} 320w, ${profileDesktopUrl} 600w`}
+            sizes="(min-width: 1024px) 320px, (min-width: 768px) 288px, 224px"
+            decoding="async"
             alt="Aashish Pant"
             className="w-full h-full object-cover"
-            width={512}
-            height={512}
+            width={600}
+            height={800}
           />
         </div>
 

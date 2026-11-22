@@ -1,5 +1,5 @@
 import { ArrowUp, Mail, MapPin, Phone, Facebook, Linkedin, Instagram } from "lucide-react";
-import logoA from "@/assets/logo-a.jpg";
+import logoA from "@/assets/logo-a.jpg?w=96&format=webp&quality=90";
 
 const quickLinks = [
   { label: "Home", id: "hero" },
@@ -36,6 +36,10 @@ const Footer = () => (
               <img
                 src={logoA}
                 alt="Aashish Pant logo"
+                width={40}
+                height={40}
+                loading="lazy"
+                decoding="async"
                 className="relative h-10 w-10 rounded-lg object-cover ring-1 ring-white/20"
               />
             </span>
@@ -105,7 +109,7 @@ const Footer = () => (
         </p>
 
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })}
           className="group relative h-11 w-11 rounded-full grid place-items-center bg-white/5 border border-white/10 hover:scale-110 transition-all"
           aria-label="Back to top"
         >

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "@/components/adaptive-motion";
 import {
   Megaphone, Palette, Cpu, Code, TrendingUp, Clock,
   PuzzleIcon, Brain, Users, Video

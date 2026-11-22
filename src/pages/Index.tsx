@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { AudioLines, BookOpen, CircuitBoard, Facebook, Globe2, Instagram, Linkedin, Menu, Newspaper, PanelsTopLeft, Scale, Users, X } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Menu, X } from "lucide-react";
 import { motion } from "@/components/adaptive-motion";
 import portraitSmall from "@/assets/aashish-profile-320.webp.asset.json";
 import portraitLarge from "@/assets/aashish-profile-600.webp.asset.json";
@@ -7,55 +7,44 @@ import youthCover from "@/assets/article-youth-future.jpg?w=480;768;1024&format=
 import politicsCover from "@/assets/article-genz-politics.jpg?w=480;768;1024&format=webp&quality=85&as=srcset";
 import societyCover from "@/assets/article-vote-rebellion.jpg?w=480;768;1024&format=webp&quality=85&as=srcset";
 
-import upcomingCover from "@/assets/article-coming-soon.jpg?w=480;768;1024&format=webp&quality=85&as=srcset";
-
 const email = "pantaashish2076@gmail.com";
 const portraitUrl = (path: string) => new URL(path, "https://aashishpant.lovable.app").href;
 const navigation = [
   ["About", "about"], ["Experience", "experience"], ["Writing", "articles"],
   ["Work", "projects"], ["Contact", "contact"],
 ];
-const footerNavigation = [["Home", "hero"], ["About", "about"], ["Skills", "skills"], ["Projects", "projects"], ["Articles", "articles"], ["Contact", "contact"]];
-const tagline = "Building bridges between technology and society. Amplifying youth voices through ideas, innovation, and writing.";
 const socialLinks = [
   { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/aashishpant" },
   { name: "Instagram", icon: Instagram, href: "https://instagram.com/officialaashishpant" },
   { name: "Facebook", icon: Facebook, href: "https://facebook.com/aashish.pant.02/" },
 ];
 const education = [
-  { date: "2082 – Present", title: "Bachelor in Computer Engineering", school: "Nepal College of Information and Technology (NCIT)", note: "Currently Pursuing" },
-  { date: "2079 – 2082", title: "+2 Science", school: "LRI School – NEB Board", note: "GPA: 3.86" },
-  { date: "Completed 2079", title: "SEE – School Level", school: "Shree Mountain EMB School – NEB Board", note: "GPA: 3.70" },
+  { date: "2082–Present", title: "Bachelor in Computer Engineering", school: "Nepal College of Information and Technology" },
+  { date: "2079–2082", title: "+2 Science", school: "LRI School · NEB Board · GPA 3.86" },
+  { date: "Completed 2079", title: "SEE", school: "Shree Mountain EMB School · NEB Board · GPA 3.70" },
 ];
 const experience = [
-  { mark: "MoL", role: "Legal Tech Fellow", organization: "Ministry of Law, Justice and Parliamentary Affairs, Nepal", detail: "Secretariat of the Ministry of Law. Focus on legal technology, digital transformation, technology-driven public services, and access to legal information." },
-  { mark: "AW", role: "Information Technology Consultant", organization: "Associates Welcome International Pvt. Ltd.", detail: "IT strategy, digital systems, technology planning, and digital transformation." },
-  { mark: "NTK", role: "Executive – Public Relations", organization: "Nepal Tek Community (NTK)", detail: "Public relations, communication, community engagement, event coordination, and member engagement." },
-  { mark: "YRC", role: "Secretary", organization: "Youth Red Cross Circle, LRI School" },
-  { mark: "IC", role: "Member", organization: "Interact Club, LRI School" },
-  { mark: "JP", role: "Exchange Program for Asian Students", organization: "Okinawa Prefectural Board of Education, Japan", date: "2024" },
+  { role: "Legal Tech Fellow", organization: "Ministry of Law, Justice and Parliamentary Affairs, Nepal", detail: "Working with the ministry’s Secretariat and its legal and technology team, with an interest in digital transformation and technology-enabled public services." },
+  { role: "Executive / PR Lead", organization: "NTK: Nepal Tek Community, NCIT" },
+  { role: "Information Technology Consultant", organization: "Associates Welcome International Pvt. Ltd." },
+  { role: "Secretary", organization: "Youth Red Cross Circle, LRI School" },
 ];
 const skills = [
-  { category: "Creative & Digital", icon: PanelsTopLeft, items: [["Canva Designing", 90], ["Social Media Advertising", 85], ["Image & Video Design", 78], ["AI Tools", 75]] },
-  { category: "Technical", icon: CircuitBoard, items: [["Basic Programming", 65], ["Technology & Digital Transformation"], ["Research & Trend Analysis", 80]] },
-  { category: "Professional", icon: Users, items: [["Time Management", 85], ["Problem-Solving", 80], ["Critical Thinking", 85], ["Teamwork & Collaboration", 90]] },
+  { category: "Digital & Creative", items: ["Canva Design", "Social Media Advertising", "Image and Video Design", "AI Tools"] },
+  { category: "Technology", items: ["Basic Programming", "Technology Research", "Digital Transformation"] },
+  { category: "Professional", items: ["Communication", "Teamwork", "Leadership", "Time Management", "Critical Thinking", "Research and Analysis"] },
 ];
 const articles = [
-  { title: "प्रदर्शनबाट सत्तासम्म : जेन–जी पुस्ताले नेपालको राजनीति कसरी पुनःपरिभाषित गर्‍यो?", category: "Politics", time: "8 min", image: politicsCover, href: "https://nayasandesh.com/archives/77135", description: "How Nepal's Gen-Z generation moved from street protests to political power, redefining the country's political landscape." },
-  { title: "१८ वर्षे आँखाबाट मेरो देश, मेरो भविष्य !", category: "Youth", time: "5 min", image: youthCover, href: "https://nayasandesh.com/archives/70948", description: "An 18-year-old's perspective on Nepal's future, identity, and the dreams of a new generation stepping into civic life." },
-  { title: "भोटलाई विद्रोह बनाउने जेन्जी पुस्ता : फागुन निर्वाचन निर्णायक", category: "Society", time: "6 min", image: societyCover, href: "https://simananews.com/archives/9174", description: "The Gen-Z generation turning votes into rebellion and why the upcoming Falgun election will be decisive for Nepal." },
-  { title: "Coming Soon", category: "Upcoming", image: upcomingCover, description: "New insights on politics, youth, and digital society." },
+  { title: "प्रदर्शनबाट सत्तासम्म : जेन–जेड पुस्ताले नेपालको राजनीति कसरी पुनःपरिभाषित गर्‍यो?", category: "Politics", time: "8 min read", image: politicsCover, href: "https://nayasandesh.com/archives/77135", description: "How Nepal’s Gen Z moved from street protests to political power and reshaped the country’s political landscape." },
+  { title: "१८ वर्षे आँखाबाट मेरो देश, मेरो भविष्य !", category: "Youth", time: "5 min read", image: youthCover, href: "https://nayasandesh.com/archives/70948", description: "An 18-year-old’s perspective on Nepal’s identity, future, and the hopes of a generation entering civic life." },
+  { title: "भोटलाई विद्रोह बनाउने जेन्जी पुस्ता : फागुन निर्वाचन निर्णायक", category: "Society", time: "6 min read", image: societyCover, href: "https://simananews.com/archives/9174", description: "A look at Gen Z’s turn toward the ballot box and what the Falgun election could mean for Nepal." },
 ];
 const projects = [
-  { name: "Personal Portfolio", status: "Live portfolio", description: "A modern animated portfolio built using React, Tailwind CSS, and Framer Motion.", tags: ["React", "Tailwind CSS", "Framer Motion"], icon: PanelsTopLeft, href: "https://github.com/pantadsa/aashishpant", label: "View source" },
-  { name: "Youth Voices Blog", status: "Writing initiative", description: "A long-form writing initiative highlighting youth perspectives on Nepali politics, technology, and social change.", tags: ["Writing", "Editorial", "Civic Tech"], icon: Newspaper, href: "#articles", label: "Explore published writing" },
-  { name: "Engineering Notes", status: "Ongoing work", description: "An evolving collection of computer engineering notes, coursework, mini-projects, and experiments.", tags: ["C", "Python", "Hardware"], icon: CircuitBoard },
+  { name: "Personal Portfolio", status: "Published website", description: "A home for my engineering work, published writing, and interests in technology and society.", href: "https://github.com/pantadsa/aashishpant", label: "View source" },
+  { name: "Youth Voices Blog", status: "Writing initiative", description: "Long-form writing on Nepali politics, technology, and social change from a youth perspective.", href: "#articles", label: "Explore published writing" },
+  { name: "Engineering Notes", status: "Ongoing coursework", description: "Notes, mini-projects, and experiments from my computer engineering studies, including C, Python, and hardware." },
 ];
-const interests = [
-  { label: "Political Awareness and Governance", icon: Scale }, { label: "Writing and Youth Voices", icon: BookOpen },
-  { label: "Public Speaking and Communication", icon: AudioLines }, { label: "Current Affairs and Social Analysis", icon: Newspaper },
-  { label: "Technology and Innovation", icon: CircuitBoard }, { label: "Digital Transformation", icon: Globe2 },
-];
+const interests = ["Technology and innovation", "Society and governance", "Youth participation", "Public speaking", "Research and writing", "Digital transformation"];
 
 const styles = `
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@500;600&family=Playfair+Display:wght@500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
@@ -148,74 +137,6 @@ const styles = `
   .ap-navlinks[data-open=true] { display:grid; gap:0; }
   .ap-navlinks a { padding:.6rem 0; }
 }
-
-.ap-portfolio { --navy:#0b1426; --blue:#245de7; --paper:#f7f9fd; --ink:#182339; --gold:#a9c9ff; --line:#d8e1ee; }
-.ap-nav { background:#0b1426; }
-.ap-nav .ap-wrap { min-height:4.75rem; }
-.ap-navlinks a:last-child { border:1px solid #6c8bc5; padding:.45rem .85rem; }
-.ap-hero { position:relative; isolation:isolate; overflow:hidden; background:radial-gradient(ellipse at 83% 45%,#1a3a73 0%,#101f3a 30%,#0b1426 68%); }
-.ap-hero::before { content:''; position:absolute; z-index:-1; inset:0; opacity:.24; background-image:linear-gradient(#abc5fb24 1px,transparent 1px),linear-gradient(90deg,#abc5fb24 1px,transparent 1px); background-size:3rem 3rem; mask-image:linear-gradient(90deg,transparent,#000); }
-.ap-hero .ap-grid { grid-template-columns:minmax(0,1.23fr) minmax(0,.77fr); }
-.ap-hero h1 { font-size:clamp(4rem,8.5vw,8rem); max-width:6ch; line-height:.85; margin:1rem 0 1.15rem; }
-.ap-hero .ap-headline { font-size:clamp(1.85rem,3.45vw,3.4rem); color:#e2edff; }
-.ap-hero .ap-lede { max-width:39rem; }
-.ap-portrait { width:90%; justify-self:center; padding:0; border:0; background:transparent; box-shadow:none; }
-.ap-portrait::before { content:''; position:absolute; inset:-1.1rem -1.4rem 2.8rem 1.1rem; border:1px solid #8cb4fa; border-radius:50% 50% 12% 12%; z-index:-1; transition:transform .35s ease; }
-.ap-portrait:hover::before { transform:translate(.35rem,-.35rem); }
-.ap-portrait img { border:1px solid #819bc4; border-radius:50% 50% 12% 12%; box-shadow:0 22px 55px #030b1a88; }
-.ap-portrait figcaption { margin-top:.3rem; }
-.ap-portrait figcaption span { background:#152b50; }
-.ap-stats { gap:0; background:#fff; border:1px solid var(--line); }
-.ap-stats div { padding:1.35rem clamp(.75rem,2.5vw,2rem); border-right:1px solid var(--line); }
-.ap-stats div:last-child { border-right:none; }
-.ap-experience { margin-top:2.2rem; border-top:1px solid #b1c3df; }
-.ap-experience article { display:grid; grid-template-columns:3.6rem minmax(0,1fr) auto; column-gap:1.4rem; align-items:start; padding:1.55rem 0; border-bottom:1px solid #c9d5e6; }
-.ap-experience h3 { margin:.05rem 0 .35rem; }
-.ap-experience .ap-dim { margin-top:.4rem; max-width:51rem; }
-.ap-org,.ap-skill-icon { color:#2456be; background:#dee9fd; }
-.ap-org { width:3.6rem; height:3.6rem; display:grid; place-items:center; font-weight:700; border:1px solid #c2d4f4; }
-.ap-reading { grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.15rem; }
-.ap-story:first-child { grid-template-columns:1.12fr 1fr; border-color:#b6c9e8; }
-.ap-story:not(:first-child) img { min-height:0; height:auto; }
-.ap-story:not(:first-child) .ap-story-copy { padding:1.3rem; align-self:stretch; }
-.ap-story:not(:first-child) h3 { font-size:clamp(1.13rem,2vw,1.4rem); }
-.ap-story [lang=en] { font-family:'Playfair Display',Georgia,serif; }
-.ap-story:hover { border-color:#7999cd; }
-.ap-gallery { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; margin-top:2rem; }
-.ap-gallery .ap-card { padding:0; overflow:hidden; }
-.ap-gallery .ap-card:first-child { grid-column:1/-1; display:grid; grid-template-columns:1.15fr 1fr; }
-.ap-project-copy { padding:clamp(1.15rem,3vw,2.4rem); }
-.ap-project-art { display:grid; justify-items:start; align-content:end; gap:.65rem; padding:1.65rem; min-height:14rem; color:#eef5ff; background:radial-gradient(ellipse at 84% 6%,#2d5aab,#111f3a 73%); position:relative; isolation:isolate; }
-.ap-project-art::before { content:''; position:absolute; inset:1rem; border:1px solid #83a5e177; z-index:-1; transition:transform .3s ease; }
-.ap-gallery article:hover .ap-project-art::before { transform:scale(.97); }
-.ap-project-art span { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.25rem,3.1vw,2.6rem); font-weight:700; }
-.ap-gallery article:nth-child(2) .ap-project-art { background:radial-gradient(ellipse at 84% 6%,#4570ac,#182843 73%); }
-.ap-gallery article:nth-child(3) .ap-project-art { background:radial-gradient(ellipse at 84% 6%,#36519c,#181e37 73%); }
-.ap-academic-note { color:#204db0; font-weight:650; margin-top:.25rem!important; }
-.ap-skill-cards .ap-card { border-top:3px solid #3975f1; }
-.ap-skill-icon { box-sizing:content-box; padding:.65rem; margin-bottom:.35rem; }
-.ap-skill-cards ul { margin-top:1rem; }
-.ap-skill-cards li,.ap-languages div { display:flex; align-items:center; justify-content:space-between; gap:.65rem; border-top:1px solid var(--line); padding:.6rem 0; }
-.ap-skill-cards strong { color:#194cb3; background:#e8effd; padding:.14rem .4rem; font-size:.86rem; }
-.ap-objective { background:#142442; }
-.ap-objective blockquote { font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.25rem,2.1vw,1.7rem); }
-.ap-vision-list li { display:flex; gap:.7rem; align-items:center; }
-.ap-vision-list svg { color:#2456be; flex-shrink:0; }
-.ap-contact-list > * { overflow-wrap:anywhere; }
-#contact .ap-contact-list > * { border:1px solid #465a7d; background:#15243e; padding:.65rem .85rem; }
-.ap-footer small span { display:block; color:#bdcbe0; }
-@media (max-width:767px) {
-  .ap-navlinks a:last-child { border:0; padding:.6rem 0; }
-  .ap-hero .ap-grid,.ap-gallery,.ap-gallery .ap-card:first-child,.ap-reading,.ap-story:first-child { grid-template-columns:1fr; }
-  .ap-hero h1 { font-size:clamp(3.7rem,13vw,6rem); }
-  .ap-portrait { width:min(87%,25rem); }
-  .ap-stats div:nth-child(2) { border-right:0; }
-  .ap-stats div:nth-child(-n+2) { border-bottom:1px solid var(--line); }
-  .ap-experience article { grid-template-columns:2.7rem minmax(0,1fr); gap:.6rem .8rem; }
-  .ap-experience article > .ap-kicker { grid-column:2; }
-  .ap-org { width:2.7rem; height:2.7rem; font-size:.75rem; }
-  .ap-vision-list { grid-template-columns:1fr; }
-}
 `;
 
 function Heading({ label, title, detail }: { label: string; title: string; detail?: string }) {
@@ -251,12 +172,12 @@ export default function Index() {
     <section id="hero" className="ap-hero ap-dark ap-band">
       <div className="ap-wrap ap-grid">
         <div>
-          <span className="ap-kicker">Computer Engineering Student &amp; Legal Tech Fellow</span>
-          <h1>AASHISH PANT</h1>
-          <p className="ap-role">Social Writer · Technology &amp; Governance Enthusiast</p>
-          <p className="ap-headline">Where Technology Meets Society.</p>
-          <p className="ap-lede">I explore the intersection of technology, governance, and social change. Through engineering, legal technology, and writing, I aim to contribute to a more informed, innovative, and progressive Nepal.</p>
-          <div className="ap-actions"><a className="ap-button" href="#projects">Explore My Work</a><a className="ap-button secondary" href="#contact">Let’s Connect</a></div>
+          <span className="ap-kicker">Hello, I’m</span>
+          <h1>Aashish Pant</h1>
+          <p className="ap-role">Computer Engineering Student · Legal Tech Enthusiast · Social Writer</p>
+          <p className="ap-headline">Exploring the intersection of Technology, Society &amp; Governance.</p>
+          <p className="ap-lede">I am a Computer Engineering student interested in technology, public policy, governance, and the ideas shaping Nepal’s future. Through writing, research, and digital initiatives, I aim to contribute to meaningful social change.</p>
+          <div className="ap-actions"><a className="ap-button" href="#projects">Explore My Work</a><a className="ap-button secondary" href="#contact">Get in Touch</a></div>
           <p className="ap-dim">Kathmandu, Nepal · Open to Opportunities</p>
         </div>
         <figure className="ap-portrait">
@@ -268,69 +189,54 @@ export default function Index() {
 
     <section id="about" className="ap-band"><div className="ap-wrap">
       <div className="ap-grid">
-        <Heading label="About" title="Beyond Technology, Understanding Society." />
-        <div className="ap-stack ap-lede">
-          <p>Aashish Pant is a Computer Engineering student at Nepal College of Information Technology (NCIT), based in Kathmandu, Nepal. Alongside his academic journey, he is interested in technology, governance, politics, and social development.</p>
-          <p>He is involved in legal technology and digital transformation initiatives through his work with the Secretariat of the Ministry of Law, Justice and Parliamentary Affairs. He also contributes to youth engagement, community initiatives, and social writing.</p>
-          <p>As a social writer and political observer, he believes that young voices deserve a meaningful place in shaping Nepal's future. His interests lie in connecting technological innovation with public service, responsible governance, and positive social change.</p>
-          <ul className="ap-skill-list">{["Technology", "Governance", "Legal Tech", "Youth Voices", "Social Impact"].map((tag) => <li key={tag}>{tag}</li>)}</ul>
-        </div>
+        <Heading label="About" title="Beyond Technology" />
+        <div className="ap-stack ap-lede"><p>I study Computer Engineering at the Nepal College of Information and Technology. I’m interested in how legal technology and digital transformation can improve public services and help institutions respond to the people they serve.</p><p>My published writing and youth leadership work give me ways to explore the same questions outside the classroom, from participation in public life to governance and national development.</p></div>
       </div>
       <dl className="ap-stats">
-        <div><dt>1st Year</dt><dd>Computer Engineering</dd></div><div><dt>3.86</dt><dd>GPA in +2 Science</dd></div><div><dt>5+</dt><dd>Published Articles</dd></div><div><dt>Kathmandu</dt><dd>Nepal</dd></div>
+        <div><dt>1st Year</dt><dd>Computer Engineering</dd></div><div><dt>3.86</dt><dd>+2 GPA</dd></div><div><dt>5+</dt><dd>Published Articles</dd></div><div><dt>Kathmandu</dt><dd>Nepal</dd></div>
       </dl>
     </div></section>
 
     <section id="experience" className="ap-band ap-surface"><div className="ap-wrap">
       <Heading label="Experience" title="Experience & Leadership" />
-      <div className="ap-experience">{experience.map(({ mark, role, organization, detail, date }) => (
-        <article key={role}><span className="ap-org" aria-hidden="true">{mark}</span><div><h3>{role}</h3><p>{organization}</p>{detail && <p className="ap-dim">{detail}</p>}</div>{date && <span className="ap-kicker">{date}</span>}</article>
-      ))}</div>
+      <div className="ap-cards two">{experience.map(({ role, organization, detail }) => <article className="ap-card" key={role}><h3>{role}</h3><p>{organization}</p>{detail && <p className="ap-dim" style={{ marginTop: ".65rem" }}>{detail}</p>}</article>)}</div>
     </div></section>
 
     <section id="articles" className="ap-band"><div className="ap-wrap">
-      <Heading label="Published writing" title="Thoughts, Perspectives & Published Work." detail="Writing about youth, society, politics, governance, and the future of Nepal." />
-      <div className="ap-reading">{articles.map((article, index) => <article className="ap-story" key={article.title}>
+      <Heading label="Published writing" title="Ideas, Perspectives & Public Discourse." detail="Writing about youth, society, politics, governance, and the future of Nepal." />
+      <div className="ap-reading">{articles.map((article, index) => <article className="ap-story" key={article.href}>
         <img src={article.image.split(",").at(-1)?.trim().split(" ")[0]} srcSet={article.image} sizes={index === 0 ? "(min-width: 768px) 55vw, 100vw" : "(min-width: 768px) 50vw, 100vw"} alt="" width={1024} height={576} loading="lazy" decoding="async" />
-        <div className="ap-story-copy"><span className="ap-kicker">{index === 0 && "Featured · "}{article.category}{article.time && " · " + article.time}</span><h3 lang={article.href ? "ne" : "en"}>{article.title}</h3><p className="ap-dim">{article.description}</p>{article.href && <a className="ap-textlink" href={article.href} aria-label={"Read Article: " + article.title}>Read Article</a>}</div>
+        <div className="ap-story-copy"><span className="ap-kicker">{index === 0 && "Featured · "}{article.category} · {article.time}</span><h3 lang="ne">{article.title}</h3><p className="ap-dim">{article.description}</p><a className="ap-textlink" href={article.href} aria-label={"Read Article: " + article.title}>Read Article</a></div>
       </article>)}</div>
     </div></section>
 
     <section id="political-view" className="ap-band ap-dark"><div className="ap-wrap ap-grid">
-      <Heading label="Personal perspective" title="A Perspective on Nepal’s Future." detail="Vision • Leadership • Innovation • Development" />
+      <Heading label="Personal perspective" title="How I See the Future of Nepal" />
       <blockquote className="ap-editorial ap-stack ap-lede">
-        <p>I believe politics should be a platform for development, innovation, and positive change rather than conflict and division. My political perspective focuses on empowering youth, improving education, promoting technology-driven governance, and creating opportunities within Nepal so talented young people do not feel forced to leave the country for success.</p>
-        <p>I support transparent leadership, accountability, and policies that prioritize practical development, entrepreneurship, digital transformation, and sustainable growth. I believe Nepal needs modern thinking, skilled leadership, and active participation from educated youth to build a stronger and more self-reliant nation.</p>
-        <p>My vision is for a progressive Nepal where technology, education, and unity become the foundation of national growth, helping create a future that is globally competitive while preserving our identity, culture, and values.</p>
+        <p>I want young people in Nepal to have more opportunities to shape public life and build a future at home. Better education, entrepreneurial opportunities, and accountable leadership can help make that possible.</p>
+        <p>Technology can make governance more accessible when it is paired with transparency and practical public services. I see digital transformation as one part of sustainable development that respects Nepal’s culture and creates room for the next generation to lead.</p>
         <cite>— Aashish Pant</cite>
       </blockquote>
     </div></section>
 
     <section id="projects" className="ap-band"><div className="ap-wrap">
       <Heading label="Selected work" title="Projects & Initiatives" />
-      <div className="ap-gallery">{projects.map(({ name, status, description, tags, icon: Icon, href, label }) => (
-        <article className="ap-card" key={name}><div className="ap-project-art" aria-hidden="true"><Icon size={50} strokeWidth={1.25} /><span>{name}</span></div><div className="ap-project-copy"><span className="ap-kicker">{status}</span><h3>{name}</h3><p className="ap-dim">{description}</p><ul className="ap-skill-list">{tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>{href && <a className="ap-textlink" href={href}>{label}</a>}</div></article>
-      ))}</div>
+      <div className="ap-cards">{projects.map(({ name, status, description, href, label }) => <article className="ap-card" key={name}><span className="ap-kicker">{status}</span><h3>{name}</h3><p className="ap-dim">{description}</p>{href && <a className="ap-textlink" href={href}>{label}</a>}</article>)}</div>
     </div></section>
 
     <section id="education" className="ap-band ap-surface"><div className="ap-wrap ap-grid">
       <Heading label="Academic background" title="Education" />
-      <ol className="ap-timeline">{education.map(({ date, title, school, note }) => <li key={title}><span className="ap-kicker">{date}</span><h3>{title}</h3><p className="ap-dim">{school}</p><p className="ap-academic-note">{note}</p></li>)}</ol>
+      <ol className="ap-timeline">{education.map(({ date, title, school }) => <li key={title}><span className="ap-kicker">{date}</span><h3>{title}</h3><p className="ap-dim">{school}</p></li>)}</ol>
     </div></section>
 
     <section id="skills" className="ap-band"><div className="ap-wrap">
-      <Heading label="Capabilities" title="Skills & Expertise" />
-      <div className="ap-cards ap-skill-cards">{skills.map(({ category, icon: Icon, items }) => <article className="ap-card" key={category}><Icon className="ap-skill-icon" size={25} aria-hidden="true" /><h3>{category}</h3><ul>{items.map(([item, rating]) => <li key={item}><span>{item}</span>{rating && <strong>{rating}%</strong>}</li>)}</ul></article>)}</div>
+      <Heading label="Capabilities" title="Skills" />
+      <div className="ap-cards">{skills.map(({ category, items }) => <article className="ap-card" key={category}><h3>{category}</h3><ul className="ap-skill-list">{items.map((item) => <li key={item}>{item}</li>)}</ul></article>)}</div>
     </div></section>
 
-    <section id="vision" className="ap-band ap-objective ap-dark"><div className="ap-wrap ap-grid">
-      <Heading label="Vision" title="Career Objective" />
-      <blockquote className="ap-editorial ap-lede">“To become an exemplary person who uses knowledge, technology, and creativity to make a positive impact in society. I aim to raise the voices of the voiceless through writing and digital platforms while growing into a skilled and responsible computer engineer. My goal is to combine technical expertise with social awareness to contribute meaningfully to both the digital world and the community.”</blockquote>
-    </div></section>
-
-    <section id="interests" className="ap-band ap-surface"><div className="ap-wrap ap-grid">
-      <div><Heading label="Communication" title="Languages" /><dl className="ap-languages"><div><dt>English</dt><dd>Proficient</dd></div><div><dt>Nepali</dt><dd>Native</dd></div><div><dt>Hindi</dt><dd>Conversational</dd></div></dl></div>
-      <div><Heading label="Beyond work" title="Interests" /><ul className="ap-vision-list">{interests.map(({ label, icon: Icon }) => <li key={label}><Icon size={20} aria-hidden="true" />{label}</li>)}</ul></div>
+    <section id="vision" className="ap-band ap-surface"><div className="ap-wrap ap-grid">
+      <Heading label="Vision & interests" title="Technology is a Tool. Impact is the Purpose." />
+      <div className="ap-stack"><ul className="ap-vision-list">{interests.map((item) => <li key={item}>{item}</li>)}</ul><p className="ap-dim">Languages: Nepali (native), English (proficient), Hindi (conversational).</p></div>
     </div></section>
 
     <section id="contact" className="ap-band ap-dark"><div className="ap-wrap ap-grid">
@@ -346,8 +252,8 @@ export default function Index() {
     </div></section>
 
     <footer className="ap-footer"><div className="ap-wrap">
-      <div className="ap-grid"><div className="ap-stack"><a className="ap-brand" href="#hero">Aashish Pant</a><p>{tagline}</p></div><div><nav aria-label="Footer">{footerNavigation.map(([label, id]) => <a key={id} href={"#" + id}>{label}</a>)}</nav><address className="ap-contact-list"><span>Kathmandu, Nepal</span><a href={"mailto:" + email}>{email}</a><a href="tel:+9779841699162">+977 9841699162</a></address><SocialLinks /></div></div>
-      <small>© 2026 Aashish Pant. All rights reserved. <span>Crafted with passion and purpose.</span></small>
+      <div className="ap-grid"><div className="ap-stack"><a className="ap-brand" href="#hero">Aashish Pant</a><p>Building bridges between technology and society. Amplifying youth voices through ideas and action.</p></div><div><nav aria-label="Footer">{navigation.map(([label, id]) => <a key={id} href={"#" + id}>{label}</a>)}</nav><a href={"mailto:" + email}>{email}</a><SocialLinks /></div></div>
+      <small>© 2026 Aashish Pant</small>
     </div></footer>
   </div>;
 }
